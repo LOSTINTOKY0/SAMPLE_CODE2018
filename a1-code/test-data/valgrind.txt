@@ -1,0 +1,45 @@
+==30541== Memcheck, a memory error detector
+==30541== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==30541== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==30541== Command: ./tree_main -echo
+==30541== 
+==30541== 
+==30541== Process terminating with default action of signal 2 (SIGINT)
+==30541==    at 0x4F4C07F: read (read.c:27)
+==30541==    by 0x4EC9147: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:531)
+==30541==    by 0x4ECA3F1: _IO_default_uflow (genops.c:380)
+==30541==    by 0x4EA7BE9: _IO_vfscanf (vfscanf.c:630)
+==30541==    by 0x4EB82E5: __isoc99_fscanf (isoc99_fscanf.c:34)
+==30541==    by 0x108BEA: main (tree_main.c:29)
+BST Demo
+Commands:
+  print:          shows contents of the tree in reverse sorted order
+  clear:          eliminates all elements from the tree
+  quit:           exit the program
+  add <name>:     inserts the given string into the tree, duplicates ignored
+  find <name>:    prints FOUND if the name is in the tree, NOT FOUND otherwise
+  preorder:       prints contents of the tree in pre-order which is how it will be saved
+  save <file>:    writes the contents of the tree in pre-order to the given file
+  load <file>:    clears the current tree and loads the one in the given file
+BST> ==30541== 
+==30541== HEAP SUMMARY:
+==30541==     in use at exit: 20 bytes in 2 blocks
+==30541==   total heap usage: 4 allocs, 2 frees, 12,308 bytes allocated
+==30541== 
+==30541== 4 bytes in 1 blocks are still reachable in loss record 1 of 2
+==30541==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==30541==    by 0x108BA1: main (tree_main.c:24)
+==30541== 
+==30541== 16 bytes in 1 blocks are still reachable in loss record 2 of 2
+==30541==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==30541==    by 0x108B90: main (tree_main.c:23)
+==30541== 
+==30541== LEAK SUMMARY:
+==30541==    definitely lost: 0 bytes in 0 blocks
+==30541==    indirectly lost: 0 bytes in 0 blocks
+==30541==      possibly lost: 0 bytes in 0 blocks
+==30541==    still reachable: 20 bytes in 2 blocks
+==30541==         suppressed: 0 bytes in 0 blocks
+==30541== 
+==30541== For counts of detected and suppressed errors, rerun with: -v
+==30541== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
